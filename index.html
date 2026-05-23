@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where Winds Meet — Forge Your Legend in Ancient China</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,700;1,300&family=Cinzel:wght@400;600;900&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0a07;
+    --parchment: #f5ede0;
+    --gold: #c8913a;
+    --gold-light: #e8b84b;
+    --crimson: #8b1a1a;
+    --mist: #b8c8d4;
+    --jade: #3a7a5a;
+    --deep: #060404;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--parchment);
+    font-family: 'Noto Serif', serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 4rem;
+    background: linear-gradient(to bottom, rgba(6,4,4,0.95) 0%, transparent 100%);
+    border-bottom: 1px solid rgba(200,145,58,0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(245,237,224,0.75);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 0.55rem 1.6rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold);
+    color: var(--ink);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  /* Layered ink-wash background */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 40%, rgba(139,26,26,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 100% 80% at 30% 70%, rgba(58,122,90,0.05) 0%, transparent 60%),
+      linear-gradient(180deg, #060404 0%, #0d0a07 40%, #13100c 70%, #0d0a07 100%);
+  }
+
+  /* Ink texture noise overlay */
+  .hero-noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  /* Mountain silhouettes */
+  .mountains {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    height: 55%;
+    pointer-events: none;
+  }
+
+  .mountains svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* Floating ink particles */
+  .particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,145,58,0.6), transparent);
+    animation: float-up linear infinite;
+    opacity: 0;
+  }
+
+  @keyframes float-up {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(-80vh) scale(0.3); opacity: 0; }
+  }
+
+  /* Decorative horizontal lines */
+  .hero-rule {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(200,145,58,0.3), transparent);
+  }
+
+  .hero-rule-top { top: 12%; }
+  .hero-rule-bottom { bottom: 20%; }
+
+  /* Corner ornaments */
+  .corner {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-color: rgba(200,145,58,0.4);
+    border-style: solid;
+  }
+
+  .corner-tl { top: 8%; left: 4%; border-width: 1px 0 0 1px; }
+  .corner-tr { top: 8%; right: 4%; border-width: 1px 1px 0 0; }
+  .corner-bl { bottom: 8%; left: 4%; border-width: 0 0 1px 1px; }
+  .corner-br { bottom: 8%; right: 4%; border-width: 0 1px 1px 0; }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    animation: hero-rise 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes hero-rise {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(3.5rem, 8vw, 8rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title span {
+    display: block;
+    background: linear-gradient(135deg, #f5ede0 0%, #c8913a 40%, #f5ede0 60%, #8b6914 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-family: 'Noto Serif', serif;
+    font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(245,237,224,0.65);
+    letter-spacing: 0.05em;
+    margin-bottom: 3rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3.5rem;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #c8913a, #8b6914);
+    color: var(--ink);
+    border: none;
+    padding: 1rem 2.8rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #e8b84b, #c8913a);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .btn-primary:hover::before { opacity: 1; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,145,58,0.4); }
+
+  .btn-primary span { position: relative; z-index: 1; }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--parchment);
+    border: 1px solid rgba(245,237,224,0.35);
+    padding: 1rem 2.8rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  .platform-badges {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.55;
+    animation: hero-rise 1.4s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .platform-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--parchment);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .platform-badge::before {
+    content: '◈';
+    color: var(--gold);
+    font-size: 0.5rem;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.45;
+    animation: hero-rise 2s 0.8s both;
+  }
+
+  .scroll-hint span {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scroll-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ── INTRO STRIP ── */
+  .intro-strip {
+    background: linear-gradient(135deg, #0f0b08, #1a120a);
+    border-top: 1px solid rgba(200,145,58,0.2);
+    border-bottom: 1px solid rgba(200,145,58,0.2);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    flex-wrap: wrap;
+  }
+
+  .intro-stat {
+    text-align: center;
+  }
+
+  .intro-stat-num {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+
+  .intro-stat-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,237,224,0.5);
+    margin-top: 0.3rem;
+  }
+
+  /* ── SECTION BASE ── */
+  section {
+    padding: 7rem 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::after {
+    content: '';
+    display: block;
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    color: var(--parchment);
+  }
+
+  .section-body {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: rgba(245,237,224,0.65);
+    max-width: 600px;
+    font-weight: 300;
+  }
+
+  /* ── STORY SECTION ── */
+  .story-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 8rem 4rem;
+  }
+
+  .story-visual {
+    position: relative;
+  }
+
+  .story-frame {
+    aspect-ratio: 4/5;
+    background: linear-gradient(160deg, #1a120a 0%, #0f0b08 100%);
+    border: 1px solid rgba(200,145,58,0.25);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Ink brush strokes as decorative art */
+  .story-frame-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ink-art {
+    width: 85%;
+    opacity: 0.8;
+  }
+
+  .story-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 50% 60%, rgba(139,26,26,0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 70% 20%, rgba(200,145,58,0.08) 0%, transparent 60%);
+    z-index: 1;
+  }
+
+  .story-corner-accent {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-color: var(--gold);
+    border-style: solid;
+    opacity: 0.5;
+    z-index: 2;
+  }
+
+  .tl { top: 12px; left: 12px; border-width: 1px 0 0 1px; }
+  .tr { top: 12px; right: 12px; border-width: 1px 1px 0 0; }
+  .bl { bottom: 12px; left: 12px; border-width: 0 0 1px 1px; }
+  .br { bottom: 12px; right: 12px; border-width: 0 1px 1px 0; }
+
+  /* ── FEATURES GRID ── */
+  .features-section {
+    background: linear-gradient(180deg, transparent, rgba(200,145,58,0.03), transparent);
+    padding: 8rem 4rem;
+  }
+
+  .features-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .features-header .section-label { justify-content: center; }
+  .features-header .section-label::after { display: none; }
+  .features-header .section-label::before {
+    content: '';
+    display: block;
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(200,145,58,0.15);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .feature-card {
+    background: #0d0a07;
+    padding: 3rem 2.5rem;
+    position: relative;
+    transition: background 0.4s;
+    overflow: hidden;
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+  }
+
+  .feature-card:hover { background: #12100c; }
+  .feature-card:hover::before { transform: scaleX(1); }
+
+  .feature-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    filter: sepia(0.3);
+  }
+
+  .feature-num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    opacity: 0.6;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .feature-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--parchment);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .feature-desc {
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: rgba(245,237,224,0.55);
+    font-weight: 300;
+  }
+
+  /* ── COMBAT SECTION ── */
+  .combat-section {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 8rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .weapons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(200,145,58,0.12);
+  }
+
+  .weapon-item {
+    background: #0d0a07;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .weapon-item:hover { background: #13100c; }
+
+  .weapon-glyph {
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(200,145,58,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    color: var(--gold);
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .weapon-item:hover .weapon-glyph {
+    border-color: var(--gold);
+    background: rgba(200,145,58,0.1);
+  }
+
+  .weapon-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: rgba(245,237,224,0.8);
+  }
+
+  /* ── WORLD SECTION ── */
+  .world-section {
+    padding: 8rem 4rem;
+    background: linear-gradient(180deg, transparent, rgba(58,122,90,0.03), transparent);
+  }
+
+  .world-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .world-regions {
+    display: flex;
+    gap: 1px;
+    background: rgba(200,145,58,0.1);
+    margin-top: 4rem;
+    overflow: hidden;
+  }
+
+  .world-region {
+    flex: 1;
+    padding: 2.5rem 2rem;
+    background: #0d0a07;
+    position: relative;
+    transition: flex 0.5s ease, background 0.3s;
+    min-width: 0;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .world-region:hover {
+    flex: 2;
+    background: #12100c;
+  }
+
+  .world-region-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(200,145,58,0.06), transparent);
+    transition: opacity 0.4s;
+  }
+
+  .world-region:hover .world-region-bg { opacity: 1; }
+
+  .world-region-num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-bottom: 0.8rem;
+  }
+
+  .world-region-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--parchment);
+    margin-bottom: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .world-region-desc {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: rgba(245,237,224,0.5);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+  }
+
+  .world-region:hover .world-region-desc { max-height: 100px; }
+
+  .world-region-line {
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(to right, var(--gold), var(--gold-light));
+    transition: width 0.4s ease;
+  }
+
+  .world-region:hover .world-region-line { width: 100%; }
+
+  /* ── RATING REVIEWS ── */
+  .reviews-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 4rem;
+    text-align: center;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(200,145,58,0.12);
+    margin-top: 4rem;
+  }
+
+  .review-card {
+    background: #0d0a07;
+    padding: 2.5rem 2rem;
+  }
+
+  .review-score {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .review-outlet {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(245,237,224,0.4);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .review-quote {
+    font-size: 0.88rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: rgba(245,237,224,0.65);
+    font-weight: 300;
+  }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    position: relative;
+    padding: 10rem 4rem;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 50% 50%, rgba(139,26,26,0.12), transparent 70%),
+      radial-gradient(ellipse 80% 40% at 50% 50%, rgba(200,145,58,0.05), transparent 80%);
+  }
+
+  .cta-rule-h {
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(200,145,58,0.25), transparent);
+  }
+
+  .cta-rule-h:first-child { top: 0; }
+  .cta-rule-h:last-child { bottom: 0; }
+
+  .cta-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-chinese {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.4em;
+    color: rgba(200,145,58,0.5);
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #f5ede0, #c8913a 50%, #f5ede0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cta-sub {
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(245,237,224,0.55);
+    margin-bottom: 3rem;
+  }
+
+  .email-form {
+    display: flex;
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    border: 1px solid rgba(200,145,58,0.35);
+  }
+
+  .email-input {
+    flex: 1;
+    background: rgba(255,255,255,0.03);
+    border: none;
+    padding: 1rem 1.5rem;
+    color: var(--parchment);
+    font-family: 'Noto Serif', serif;
+    font-size: 0.88rem;
+    outline: none;
+  }
+
+  .email-input::placeholder { color: rgba(245,237,224,0.3); }
+
+  .email-submit {
+    background: linear-gradient(135deg, #c8913a, #8b6914);
+    color: var(--ink);
+    border: none;
+    padding: 1rem 2rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+
+  .email-submit:hover {
+    background: linear-gradient(135deg, #e8b84b, #c8913a);
+  }
+
+  .cta-platforms {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-platform-btn {
+    border: 1px solid rgba(245,237,224,0.2);
+    background: transparent;
+    color: rgba(245,237,224,0.7);
+    padding: 0.7rem 1.6rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cta-platform-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid rgba(200,145,58,0.15);
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+  }
+
+  .footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(245,237,224,0.35);
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 0.65rem;
+    color: rgba(245,237,224,0.2);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section, .story-section, .combat-section { padding: 4rem 1.5rem; }
+    .story-section, .combat-section { grid-template-columns: 1fr; gap: 3rem; }
+    .features-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .world-regions { flex-direction: column; }
+    .world-region { flex: none !important; }
+    .world-region-desc { max-height: 100px !important; }
+    .intro-strip { gap: 2rem; padding: 2rem; }
+    footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .corner { display: none; }
+    .email-form { flex-direction: column; }
+    .email-submit { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Where Winds Meet</div>
+  <ul class="nav-links">
+    <li><a href="#story">Story</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#combat">Combat</a></li>
+    <li><a href="#world">World</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">Pre-Register</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="max-width:none; padding:0;">
+  <div class="hero-bg"></div>
+  <div class="hero-noise"></div>
+
+  <!-- Mountain silhouettes SVG -->
+  <div class="mountains">
+    <svg viewBox="0 0 1440 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="mountain-fade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a1410" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#0d0a07" stop-opacity="1"/>
+        </linearGradient>
+        <linearGradient id="mountain-mid" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#111009" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#0d0a07" stop-opacity="1"/>
+        </linearGradient>
+        <linearGradient id="mountain-front" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0f0c09" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#0d0a07" stop-opacity="1"/>
+        </linearGradient>
+      </defs>
+      <!-- Far mountains -->
+      <path d="M0,500 L0,320 C60,320 80,240 140,200 C200,160 240,220 300,200 C360,180 380,120 460,100 C540,80 560,160 640,140 C720,120 740,60 820,40 C900,20 920,100 1000,90 C1080,80 1100,140 1180,150 C1260,160 1300,100 1360,110 C1420,120 1440,140 1440,140 L1440,500 Z" fill="url(#mountain-fade)"/>
+      <!-- Mid mountains -->
+      <path d="M0,500 L0,380 C80,380 100,300 180,270 C260,240 290,310 370,290 C450,270 470,200 560,185 C650,170 680,240 760,230 C840,220 860,160 950,150 C1040,140 1060,210 1140,220 C1220,230 1260,170 1330,175 C1400,180 1440,200 1440,200 L1440,500 Z" fill="url(#mountain-mid)"/>
+      <!-- Front silhouette with trees -->
+      <path d="M0,500 L0,430 C40,430 55,400 80,390 C105,380 115,420 140,415 C165,410 175,390 210,380 C245,370 255,400 290,395 C325,390 345,370 390,360 C435,350 445,380 490,375 C535,370 555,350 610,345 C665,340 685,365 740,360 C795,355 815,335 880,330 C945,325 960,355 1020,350 C1080,345 1100,320 1170,315 C1240,310 1260,345 1330,340 C1400,335 1440,345 1440,345 L1440,500 Z" fill="url(#mountain-front)"/>
+      <!-- Ink wash mist band -->
+      <rect x="0" y="340" width="1440" height="40" fill="url(#mountain-fade)" opacity="0.3"/>
+    </svg>
+  </div>
+
+  <!-- Floating particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Decorative rules -->
+  <div class="hero-rule hero-rule-top"></div>
+  <div class="hero-rule hero-rule-bottom"></div>
+
+  <!-- Corner ornaments -->
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Free to Play · Open World ARPG</div>
+    <h1 class="hero-title">
+      <span>Where</span>
+      <span>Winds</span>
+      <span>Meet</span>
+    </h1>
+    <p class="hero-subtitle">Forge your legend in the turbulent heart of tenth-century China. Steel meets silk. Fate bends like bamboo.</p>
+    <div class="hero-buttons">
+      <a href="#register" class="btn-primary"><span>Pre-Register Now</span></a>
+      <a href="#features" class="btn-secondary">Explore the World</a>
+    </div>
+    <div class="platform-badges">
+      <span class="platform-badge">PS5</span>
+      <span class="platform-badge">PC Steam</span>
+      <span class="platform-badge">Mobile</span>
+      <span class="platform-badge">Cross-Play</span>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- 3D SCROLL SCENE -->
+<div id="scroll-scene-wrapper">
+  <div id="scroll-scene-sticky">
+    <canvas id="three-canvas"></canvas>
+    <div id="scroll-scene-overlay">
+      <div class="ss-panel" id="ss-panel-1">
+        <div class="ss-panel-inner">
+          <div class="ss-eyebrow">The Jianghu Awaits</div>
+          <div class="ss-headline">Where Mountains<br/>Kiss the Mist</div>
+          <div class="ss-body">Ancient peaks rise through silk-white clouds. The wind carries whispers of fallen dynasties.</div>
+        </div>
+      </div>
+      <div class="ss-panel" id="ss-panel-2">
+        <div class="ss-panel-inner">
+          <div class="ss-eyebrow">Wield Your Fate</div>
+          <div class="ss-headline">The Sword<br/>Remembers</div>
+          <div class="ss-body">Every technique stolen from a defeated master. Every scar a chapter in your legend.</div>
+        </div>
+      </div>
+      <div class="ss-panel" id="ss-panel-3">
+        <div class="ss-panel-inner">
+          <div class="ss-eyebrow">Your Path. Your Name.</div>
+          <div class="ss-headline">Rise. Fall.<br/>Become Legend.</div>
+          <div class="ss-body">The Jianghu does not forget those who shape it. Begin your chapter.</div>
+        </div>
+      </div>
+    </div>
+    <div id="scroll-progress-bar"></div>
+    <div id="scroll-scene-hint">
+      <span>Scroll to journey deeper</span>
+      <div class="ss-scroll-arrow">↓</div>
+    </div>
+  </div>
+</div>
+
+<style>
+#scroll-scene-wrapper {
+  height: 400vh;
+  position: relative;
+}
+#scroll-scene-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #060404;
+}
+#three-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+#scroll-scene-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+.ss-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 8%;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.ss-panel.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.ss-panel-inner {
+  max-width: 520px;
+}
+.ss-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.ss-eyebrow::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.7;
+}
+.ss-headline {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.0;
+  color: var(--parchment);
+  margin-bottom: 1.4rem;
+  text-shadow: 0 0 60px rgba(200,145,58,0.2);
+}
+.ss-body {
+  font-family: 'Noto Serif', serif;
+  font-size: 1rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.8;
+  color: rgba(245,237,224,0.6);
+  max-width: 400px;
+}
+#scroll-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(to right, #8b6914, #c8913a, #e8b84b);
+  z-index: 20;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 12px rgba(200,145,58,0.6);
+}
+#scroll-scene-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 5%;
+  z-index: 20;
+  text-align: right;
+  opacity: 0.45;
+  transition: opacity 0.4s;
+}
+#scroll-scene-hint span {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--parchment);
+  margin-bottom: 0.4rem;
+}
+.ss-scroll-arrow {
+  color: var(--gold);
+  font-size: 1rem;
+  animation: bounce-arrow 2s ease-in-out infinite;
+}
+@keyframes bounce-arrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+</style>
+
+<!-- STATS STRIP -->
+<div class="intro-strip">
+  <div class="intro-stat">
+    <span class="intro-stat-num">80M+</span>
+    <span class="intro-stat-label">Players Worldwide</span>
+  </div>
+  <div class="intro-stat">
+    <span class="intro-stat-num">40+</span>
+    <span class="intro-stat-label">Mystic Arts</span>
+  </div>
+  <div class="intro-stat">
+    <span class="intro-stat-num">20+</span>
+    <span class="intro-stat-label">Distinct Regions</span>
+  </div>
+  <div class="intro-stat">
+    <span class="intro-stat-num">150h+</span>
+    <span class="intro-stat-label">Story Content</span>
+  </div>
+  <div class="intro-stat">
+    <span class="intro-stat-num">10k+</span>
+    <span class="intro-stat-label">Unique NPCs</span>
+  </div>
+</div>
+
+<!-- STORY SECTION -->
+<div id="story" class="story-section">
+  <div class="story-visual reveal">
+    <div class="story-frame">
+      <div class="story-corner-accent tl"></div>
+      <div class="story-corner-accent tr"></div>
+      <div class="story-corner-accent bl"></div>
+      <div class="story-corner-accent br"></div>
+      <div class="story-frame-inner">
+        <!-- Ink brush art SVG -->
+        <svg class="ink-art" viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="glow-c" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#c8913a" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#c8913a" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <!-- Figure silhouette - sword master -->
+          <circle cx="150" cy="110" r="60" fill="url(#glow-c)" opacity="0.5"/>
+          <!-- Head -->
+          <ellipse cx="150" cy="65" rx="18" ry="20" fill="#8b6914" opacity="0.7"/>
+          <!-- Topknot -->
+          <ellipse cx="150" cy="47" rx="5" ry="10" fill="#8b6914" opacity="0.8"/>
+          <!-- Robes body -->
+          <path d="M118,88 Q135,120 130,160 Q125,200 118,230 L182,230 Q175,200 170,160 Q165,120 182,88 Q165,100 150,100 Q135,100 118,88Z" fill="#6b4a12" opacity="0.65"/>
+          <!-- Flowing sleeve left -->
+          <path d="M130,115 Q100,130 80,160 Q70,175 75,185 Q85,175 100,165 Q115,155 130,145Z" fill="#5a3d0f" opacity="0.6"/>
+          <!-- Flowing sleeve right -->
+          <path d="M170,115 Q200,130 220,160 Q230,175 225,185 Q215,175 200,165 Q185,155 170,145Z" fill="#5a3d0f" opacity="0.6"/>
+          <!-- Sword in right hand -->
+          <line x1="220" y1="168" x2="270" y2="80" stroke="#c8913a" stroke-width="2.5" opacity="0.9" stroke-linecap="round"/>
+          <line x1="210" y1="162" x2="230" y2="175" stroke="#c8913a" stroke-width="3" opacity="0.9" stroke-linecap="round"/>
+          <!-- Sword glow -->
+          <line x1="222" y1="165" x2="270" y2="80" stroke="#e8b84b" stroke-width="0.5" opacity="0.5"/>
+          <!-- Wind lines -->
+          <path d="M60,100 Q90,95 110,105" stroke="#c8913a" stroke-width="0.8" fill="none" opacity="0.35" stroke-linecap="round"/>
+          <path d="M50,120 Q85,112 115,125" stroke="#c8913a" stroke-width="0.6" fill="none" opacity="0.25" stroke-linecap="round"/>
+          <path d="M240,90 Q260,88 275,95" stroke="#c8913a" stroke-width="0.8" fill="none" opacity="0.3" stroke-linecap="round"/>
+          <!-- Cherry blossom petals -->
+          <ellipse cx="90" cy="80" rx="4" ry="6" fill="#c8913a" opacity="0.3" transform="rotate(30 90 80)"/>
+          <ellipse cx="70" cy="140" rx="3" ry="5" fill="#c8913a" opacity="0.2" transform="rotate(-20 70 140)"/>
+          <ellipse cx="250" cy="110" rx="4" ry="6" fill="#c8913a" opacity="0.25" transform="rotate(50 250 110)"/>
+          <ellipse cx="265" cy="160" rx="3" ry="5" fill="#c8913a" opacity="0.2" transform="rotate(-35 265 160)"/>
+          <!-- Bottom robe/footing -->
+          <path d="M118,230 Q130,260 140,280 Q150,290 160,280 Q170,260 182,230Z" fill="#5a3d0f" opacity="0.6"/>
+          <!-- Ground mist -->
+          <ellipse cx="150" cy="310" rx="100" ry="20" fill="#1a1208" opacity="0.8"/>
+          <path d="M50,305 Q150,295 250,305 Q250,320 150,325 Q50,320 50,305Z" fill="#c8913a" opacity="0.06"/>
+          <!-- Chinese characters -->
+          <text x="50" y="355" font-family="serif" font-size="12" fill="#c8913a" opacity="0.4" letter-spacing="8">江湖縱橫</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-text reveal" id="story-text" style="transition-delay: 0.2s;">
+    <div class="section-label">The Legend Begins</div>
+    <h2 class="section-title">A World Torn by Chaos. A Name Yet Unwritten.</h2>
+    <p class="section-body">
+      Step into tenth-century China during the turbulent Five Dynasties and Ten Kingdoms period — an era of political intrigue, shifting power, and legendary battles that shaped the course of history.
+    </p>
+    <p class="section-body" style="margin-top: 1.2rem;">
+      You are a wandering sword master of uncertain origin. From the bustling imperial capital to the forgotten wilderness, every path conceals secrets. Your every choice shapes your legend — and your fate.
+    </p>
+    <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(200,145,58,0.2);">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+        <div>
+          <div style="font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.4rem;">Era</div>
+          <div style="font-size: 0.9rem; color: rgba(245,237,224,0.7);">Five Dynasties & Ten Kingdoms</div>
+        </div>
+        <div>
+          <div style="font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.4rem;">Genre</div>
+          <div style="font-size: 0.9rem; color: rgba(245,237,224,0.7);">Wuxia Open-World ARPG</div>
+        </div>
+        <div>
+          <div style="font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.4rem;">Mode</div>
+          <div style="font-size: 0.9rem; color: rgba(245,237,224,0.7);">Solo & Co-op (up to 4)</div>
+        </div>
+        <div>
+          <div style="font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.4rem;">Model</div>
+          <div style="font-size: 0.9rem; color: rgba(245,237,224,0.7);">Free to Play, No Pay-to-Win</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES SECTION -->
+<div id="features" class="features-section">
+  <div class="features-header reveal">
+    <div class="section-label">What Awaits You</div>
+    <h2 class="section-title">A Living World Forged in Ink & Iron</h2>
+  </div>
+
+  <div class="features-grid reveal" style="transition-delay: 0.2s;">
+    <div class="feature-card">
+      <span class="feature-icon">⚔️</span>
+      <span class="feature-num">01</span>
+      <div class="feature-title">Fluid Martial Combat</div>
+      <p class="feature-desc">Master over 40 unique Mystic Arts drawn from authentic martial traditions — from the flowing grace of Tai Chi to the thunderous force of Lion's Roar. Every weapon feels alive.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🌏</span>
+      <span class="feature-num">02</span>
+      <div class="feature-title">Boundless Open World</div>
+      <p class="feature-desc">Scale rooftops with fluid parkour, soar across miles on windstride, or descend into layered underground catacombs. 20+ distinct regions stretch to every horizon.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🎭</span>
+      <span class="feature-num">03</span>
+      <div class="feature-title">Morality & Consequence</div>
+      <p class="feature-desc">Your choices echo through the Jianghu. Cause chaos and face bounties. Walk a noble path and earn allies. Every action carries weight. Every reputation is earned.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🏛️</span>
+      <span class="feature-num">04</span>
+      <div class="feature-title">16 Living Systems</div>
+      <p class="feature-desc">Craft, architecture, astronomy, folk games, medicine, performance — a fully immersive ancient society woven into every corner of the world.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">👥</span>
+      <span class="feature-num">05</span>
+      <div class="feature-title">Seamless Multiplayer</div>
+      <p class="feature-desc">Team up with up to four companions for shared adventure, or test your mettle alone. Cross-play and cross-progression unite all platforms.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🎭</span>
+      <span class="feature-num">06</span>
+      <div class="feature-title">Choose Your Destiny</div>
+      <p class="feature-desc">Doctor, merchant, assassin, bounty hunter — your role in the Jianghu is yours to define. The legend you forge will echo for generations.</p>
+    </div>
+  </div>
+</div>
+
+<!-- COMBAT SECTION -->
+<div id="combat" class="combat-section">
+  <div class="reveal">
+    <div class="section-label">Arsenal of the Jianghu</div>
+    <h2 class="section-title">Eight Weapons.<br/>Infinite Combinations.</h2>
+    <p class="section-body">
+      Each weapon system carries its own philosophy of motion. Steal techniques from rival martial sects, combine disciplines, and forge a fighting style as unique as your legend.
+    </p>
+    <div style="margin-top: 2.5rem; padding: 1.5rem; border: 1px solid rgba(200,145,58,0.2); background: rgba(200,145,58,0.04);">
+      <div style="font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.8rem;">Featured Art</div>
+      <div style="font-size: 0.88rem; color: rgba(245,237,224,0.55); line-height: 1.7; font-style: italic; font-weight: 300;">
+        "Those into fast and flashy action RPGs shouldn't hesitate to let the wind carry their legend."
+      </div>
+      <div style="font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.25em; color: rgba(200,145,58,0.6); margin-top: 0.5rem;">— Vandal, 8/10</div>
+    </div>
+  </div>
+
+  <div class="weapons-grid reveal" style="transition-delay: 0.2s;">
+    <div class="weapon-item">
+      <div class="weapon-glyph">剑</div>
+      <span class="weapon-name">Jian Sword</span>
+    </div>
+    <div class="weapon-item">
+      <div class="weapon-glyph">矛</div>
+      <span class="weapon-name">Spear</span>
+    </div>
+    <div class="weapon-item">
+      <div class="weapon-glyph">双</div>
+      <span class="weapon-name">Dual Blades</span>
+    </div>
+    <div class="weapon-item">
+      <div class="weapon-glyph">刀</div>
+      <span class="weapon-name">Glaive</span>
+    </div>
+    <div class="weapon-item">
+      <div class="weapon-glyph">扇</div>
+      <span class="weapon-name">Iron Fan</span>
+    </div>
+    <div class="weapon-item">
+      <div class="weapon-glyph">伞</div>
+      <span class="weapon-name">Umbrella</span>
+    </div>
+    <div class="weapon-item">
+      <div class="weapon-glyph">绳</div>
+      <span class="weapon-name">Rope Dart</span>
+    </div>
+    <div class="weapon-item">
+      <div class="weapon-glyph">弓</div>
+      <span class="weapon-name">Bow & Arrow</span>
+    </div>
+  </div>
+</div>
+
+<!-- WORLD SECTION -->
+<div id="world" class="world-section">
+  <div class="world-inner">
+    <div class="reveal">
+      <div class="section-label">Regions of the Jianghu</div>
+      <h2 class="section-title">Every Road Holds a Secret</h2>
+      <p class="section-body">From the court of the imperial capital to the wild margins of forgotten kingdoms — the world breathes, shifts, and remembers your footsteps.</p>
+    </div>
+    <div class="world-regions reveal" style="transition-delay: 0.2s;">
+      <div class="world-region">
+        <div class="world-region-bg"></div>
+        <div class="world-region-num">01</div>
+        <div class="world-region-name">Kaifeng</div>
+        <div class="world-region-desc">The beating heart of the empire. Merchant stalls, imperial courts, and shadows thick with conspiracy beneath lantern light.</div>
+        <div class="world-region-line"></div>
+      </div>
+      <div class="world-region">
+        <div class="world-region-bg"></div>
+        <div class="world-region-num">02</div>
+        <div class="world-region-name">Qinghe</div>
+        <div class="world-region-desc">Misty rivers and bamboo forests where rival sects guard ancient techniques with blood and blade.</div>
+        <div class="world-region-line"></div>
+      </div>
+      <div class="world-region">
+        <div class="world-region-bg"></div>
+        <div class="world-region-num">03</div>
+        <div class="world-region-name">Hexi Corridor</div>
+        <div class="world-region-desc">Wind-scoured steppes and desert trade routes where bandits and wandering monks share the same lonely road.</div>
+        <div class="world-region-line"></div>
+      </div>
+      <div class="world-region">
+        <div class="world-region-bg"></div>
+        <div class="world-region-num">04</div>
+        <div class="world-region-name">The Wilderness</div>
+        <div class="world-region-desc">Forgotten ruins, hidden catacombs, and sacred sites where history bleeds into legend and the past refuses to sleep.</div>
+        <div class="world-region-line"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<div id="reviews" class="reviews-section">
+  <div class="reveal">
+    <div class="section-label" style="justify-content: center;">Critical Acclaim</div>
+    <h2 class="section-title">The Jianghu Speaks</h2>
+  </div>
+  <div class="reviews-grid reveal" style="transition-delay: 0.2s;">
+    <div class="review-card">
+      <span class="review-score">8/10</span>
+      <span class="review-outlet">CGMagazine</span>
+      <p class="review-quote">Applies the action and charm of Wuxia-style that's easy to get sucked into.</p>
+    </div>
+    <div class="review-card">
+      <span class="review-score">8/10</span>
+      <span class="review-outlet">Vandal</span>
+      <p class="review-quote">Those into fast and flashy action RPGs shouldn't hesitate to let the wind carry their legend.</p>
+    </div>
+    <div class="review-card">
+      <span class="review-score">8/10</span>
+      <span class="review-outlet">Gamers Heroes</span>
+      <p class="review-quote">A genuine open-world wuxia experience that delivers on the promise of freedom and fluid combat.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA / REGISTER -->
+<div id="register" class="cta-section">
+  <div class="cta-rule-h"></div>
+  <div class="cta-bg"></div>
+  <div class="cta-content reveal">
+    <div class="cta-chinese">江湖縱橫 · 天下任我行</div>
+    <h2 class="cta-title">Your Legend<br/>Awaits</h2>
+    <p class="cta-sub">Free to play. No pay-to-win. Cross-play across all platforms.</p>
+    <div class="email-form">
+      <input class="email-input" type="email" placeholder="Enter your email to pre-register…" />
+      <button class="email-submit">Register</button>
+    </div>
+    <div class="cta-platforms">
+      <button class="cta-platform-btn">🎮 PlayStation 5</button>
+      <button class="cta-platform-btn">🖥 Steam PC</button>
+      <button class="cta-platform-btn">📱 iOS</button>
+      <button class="cta-platform-btn">📱 Android</button>
+    </div>
+  </div>
+  <div class="cta-rule-h" style="bottom: 0; top: auto;"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Where Winds Meet</div>
+  <ul class="footer-links">
+    <li><a href="#">Privacy</a></li>
+    <li><a href="#">Terms</a></li>
+    <li><a href="#">Discord</a></li>
+    <li><a href="#">YouTube</a></li>
+    <li><a href="#">Twitter / X</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 Where Winds Meet · Everstone Studio · NetEase Games</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ══════════════════════════════════════════
+//  3D SCROLL SCENE — Wuxia Mountain World
+// ══════════════════════════════════════════
+(function() {
+  const canvas = document.getElementById('three-canvas');
+  const wrapper = document.getElementById('scroll-scene-wrapper');
+  if (!canvas || !wrapper || typeof THREE === 'undefined') return;
+
+  // ── Renderer ──
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x060404, 1);
+  renderer.shadowMap.enabled = false;
+
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x0d0906, 0.018);
+
+  const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 300);
+  camera.position.set(0, 2, 18);
+  camera.lookAt(0, 0, 0);
+
+  // ── Resize ──
+  function resize() {
+    const w = canvas.parentElement.clientWidth;
+    const h = canvas.parentElement.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // ── Helpers ──
+  const gold   = new THREE.Color(0xc8913a);
+  const goldL  = new THREE.Color(0xe8b84b);
+  const dark   = new THREE.Color(0x0d0a07);
+  const crimson= new THREE.Color(0x5a1010);
+
+  // ── Lighting ──
+  scene.add(new THREE.AmbientLight(0x1a1208, 2.5));
+  const dirLight = new THREE.DirectionalLight(0xc8913a, 1.2);
+  dirLight.position.set(5, 8, 6);
+  scene.add(dirLight);
+  const rimLight = new THREE.DirectionalLight(0x3a1a08, 0.6);
+  rimLight.position.set(-6, 3, -4);
+  scene.add(rimLight);
+
+  // ── Mountain layer factory ──
+  function makeMountainProfile(seed, peaks, width, height) {
+    const pts = [];
+    const step = width / (peaks * 4);
+    const rng = (s) => Math.sin(s * 127.1 + seed * 311.7) * 0.5 + 0.5;
+    pts.push(new THREE.Vector2(-width/2, -height * 0.05));
+    for (let i = 0; i <= peaks * 4; i++) {
+      const x = -width/2 + i * step;
+      const t = i / (peaks * 4);
+      const envelope = Math.sin(t * Math.PI) * 0.85 + 0.15;
+      const y = rng(i) * height * envelope;
+      pts.push(new THREE.Vector2(x, y));
+    }
+    pts.push(new THREE.Vector2(width/2, -height * 0.05));
+    pts.push(new THREE.Vector2(-width/2, -height * 0.05));
+    return pts;
+  }
+
+  function makeMountain(seed, z, color, opacity, peaks, width, height) {
+    const pts = makeMountainProfile(seed, peaks, width, height);
+    const shape = new THREE.Shape(pts);
+    const geo = new THREE.ShapeGeometry(shape, 3);
+    const mat = new THREE.MeshBasicMaterial({
+      color: new THREE.Color(color),
+      transparent: true,
+      opacity,
+      side: THREE.DoubleSide,
+      depthWrite: false,
+    });
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.position.z = z;
+    mesh.position.y = -3;
+    return mesh;
+  }
+
+  // Mountain layers — far → near
+  const mountains = [
+    makeMountain(1, -22, 0x1a1510, 0.9, 5, 80, 14),
+    makeMountain(2, -16, 0x15110d, 0.92, 6, 70, 11),
+    makeMountain(3, -10, 0x110e0a, 0.94, 7, 60, 9),
+    makeMountain(4,  -5, 0x0e0b08, 0.96, 8, 50, 7.5),
+    makeMountain(5,   0, 0x0b0907, 0.98, 9, 45, 6),
+  ];
+  mountains.forEach(m => scene.add(m));
+
+  // ── Mist planes ──
+  function makeMistPlane(z, y, opacity, width) {
+    const geo = new THREE.PlaneGeometry(width, 2.5);
+    const mat = new THREE.MeshBasicMaterial({
+      color: 0x1a1510,
+      transparent: true,
+      opacity,
+      side: THREE.DoubleSide,
+      depthWrite: false,
+    });
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.position.set(0, y, z);
+    return mesh;
+  }
+  for (let i = 0; i < 5; i++) {
+    scene.add(makeMistPlane(-20 + i * 4, -2.2 + i * 0.3, 0.5, 100));
+  }
+
+  // ── Floating ink particles ──
+  const particleCount = 120;
+  const pGeo = new THREE.BufferGeometry();
+  const pPos = new Float32Array(particleCount * 3);
+  const pVel = new Float32Array(particleCount * 3);
+  const pSizes = new Float32Array(particleCount);
+  for (let i = 0; i < particleCount; i++) {
+    pPos[i*3]   = (Math.random() - 0.5) * 40;
+    pPos[i*3+1] = (Math.random() - 0.5) * 20;
+    pPos[i*3+2] = (Math.random() - 0.5) * 30;
+    pVel[i*3]   = (Math.random() - 0.5) * 0.005;
+    pVel[i*3+1] = Math.random() * 0.008 + 0.003;
+    pVel[i*3+2] = (Math.random() - 0.5) * 0.003;
+    pSizes[i] = Math.random() * 2.5 + 0.8;
+  }
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+  pGeo.setAttribute('size', new THREE.BufferAttribute(pSizes, 1));
+  const pMat = new THREE.PointsMaterial({
+    color: 0xc8913a,
+    size: 0.12,
+    transparent: true,
+    opacity: 0.55,
+    sizeAttenuation: true,
+    depthWrite: false,
+  });
+  const particles = new THREE.Points(pGeo, pMat);
+  scene.add(particles);
+
+  // ── Central sword ──
+  const swordGroup = new THREE.Group();
+  scene.add(swordGroup);
+
+  // Blade
+  const bladePts = [
+    new THREE.Vector2(0, 0),
+    new THREE.Vector2(0.06, 0.1),
+    new THREE.Vector2(0.055, 1.8),
+    new THREE.Vector2(0, 2.4),
+    new THREE.Vector2(-0.055, 1.8),
+    new THREE.Vector2(-0.06, 0.1),
+  ];
+  const bladeShape = new THREE.Shape(bladePts);
+  const bladeGeo = new THREE.ExtrudeGeometry(bladeShape, { depth: 0.015, bevelEnabled: false });
+  const bladeMat = new THREE.MeshStandardMaterial({
+    color: 0xd4c090,
+    metalness: 0.95,
+    roughness: 0.08,
+    emissive: 0xc8913a,
+    emissiveIntensity: 0.15,
+  });
+  const blade = new THREE.Mesh(bladeGeo, bladeMat);
+  blade.position.y = 0;
+  swordGroup.add(blade);
+
+  // Guard (tsuba)
+  const guardGeo = new THREE.BoxGeometry(0.9, 0.1, 0.12);
+  const guardMat = new THREE.MeshStandardMaterial({
+    color: 0xc8913a,
+    metalness: 0.85,
+    roughness: 0.2,
+    emissive: 0xe8b84b,
+    emissiveIntensity: 0.3,
+  });
+  const guard = new THREE.Mesh(guardGeo, guardMat);
+  guard.position.y = 0.1;
+  swordGroup.add(guard);
+
+  // Handle
+  const handleGeo = new THREE.CylinderGeometry(0.055, 0.065, 0.8, 8);
+  const handleMat = new THREE.MeshStandardMaterial({ color: 0x3a2010, metalness: 0.1, roughness: 0.8 });
+  const handle = new THREE.Mesh(handleGeo, handleMat);
+  handle.position.y = -0.45;
+  swordGroup.add(handle);
+
+  // Pommel
+  const pommelGeo = new THREE.SphereGeometry(0.1, 8, 8);
+  const pommel = new THREE.Mesh(pommelGeo, guardMat);
+  pommel.position.y = -0.9;
+  swordGroup.add(pommel);
+
+  swordGroup.position.set(4.5, 0.5, 3);
+  swordGroup.rotation.z = -0.25;
+  swordGroup.rotation.x = 0.1;
+
+  // Sword glow ring
+  const glowRingGeo = new THREE.TorusGeometry(1.2, 0.02, 8, 64);
+  const glowRingMat = new THREE.MeshBasicMaterial({ color: 0xc8913a, transparent: true, opacity: 0.4 });
+  const glowRing = new THREE.Mesh(glowRingGeo, glowRingMat);
+  glowRing.position.copy(swordGroup.position);
+  glowRing.rotation.x = Math.PI / 2;
+  scene.add(glowRing);
+
+  // ── Cherry blossoms / petals ──
+  const petalCount = 60;
+  const petalGeo = new THREE.BufferGeometry();
+  const petalPos = new Float32Array(petalCount * 3);
+  const petalPhase = new Float32Array(petalCount);
+  for (let i = 0; i < petalCount; i++) {
+    petalPos[i*3]   = (Math.random() - 0.5) * 30;
+    petalPos[i*3+1] = (Math.random()) * 18 - 4;
+    petalPos[i*3+2] = (Math.random() - 0.5) * 20;
+    petalPhase[i] = Math.random() * Math.PI * 2;
+  }
+  petalGeo.setAttribute('position', new THREE.BufferAttribute(petalPos, 3));
+  const petalMat = new THREE.PointsMaterial({
+    color: 0xd4845a,
+    size: 0.18,
+    transparent: true,
+    opacity: 0.5,
+    sizeAttenuation: true,
+    depthWrite: false,
+  });
+  const petals = new THREE.Points(petalGeo, petalMat);
+  scene.add(petals);
+
+  // ── Scroll state ──
+  let scrollProgress = 0; // 0–1 over the scroll wrapper
+  let targetCamX = 0, targetCamY = 2, targetCamZ = 18;
+  let targetFogDensity = 0.018;
+  let targetSwordX = 4.5, targetSwordRot = -0.25;
+
+  function getScrollProgress() {
+    const rect = wrapper.getBoundingClientRect();
+    const totalScroll = wrapper.offsetHeight - window.innerHeight;
+    const scrolled = -rect.top;
+    return Math.max(0, Math.min(1, scrolled / totalScroll));
+  }
+
+  // Panels
+  const panels = document.querySelectorAll('.ss-panel');
+  const progressBar = document.getElementById('scroll-progress-bar');
+  const hint = document.getElementById('scroll-scene-hint');
+
+  function updatePanels(p) {
+    // Panel 1: 0–0.3, Panel 2: 0.3–0.65, Panel 3: 0.65–1.0
+    panels[0].classList.toggle('active', p < 0.28);
+    panels[1].classList.toggle('active', p >= 0.28 && p < 0.65);
+    panels[2].classList.toggle('active', p >= 0.65);
+    if (progressBar) progressBar.style.width = (p * 100) + '%';
+    if (hint) hint.style.opacity = p > 0.05 ? '0' : '0.45';
+  }
+
+  // ── Smooth lerp state ──
+  let camX = 0, camY = 2, camZ = 18;
+  let fogDensity = 0.018;
+  let clock = new THREE.Clock();
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function easeInOut(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+  // ── Animation loop ──
+  function animate() {
+    requestAnimationFrame(animate);
+    const dt = clock.getDelta();
+    const t = clock.getElapsedTime();
+    const sp = scrollProgress;
+
+    // Camera journey: pull in, arc left, descend
+    // Phase 1 (0→0.33): fly forward through mountains
+    // Phase 2 (0.33→0.66): arc around sword, tilt
+    // Phase 3 (0.66→1): pull back and rise
+
+    let tCX, tCY, tCZ, tLX, tLY, tLZ;
+
+    if (sp < 0.33) {
+      const f = sp / 0.33;
+      const e = easeInOut(f);
+      tCX = lerp(0, -2.5, e);
+      tCY = lerp(2, 1.2, e);
+      tCZ = lerp(18, 8, e);
+      tLX = lerp(0, 1.5, e);
+      tLY = lerp(0, 0.5, e);
+      tLZ = lerp(0, -3, e);
+    } else if (sp < 0.66) {
+      const f = (sp - 0.33) / 0.33;
+      const e = easeInOut(f);
+      tCX = lerp(-2.5, 3, e);
+      tCY = lerp(1.2, 2.5, e);
+      tCZ = lerp(8, 6, e);
+      tLX = lerp(1.5, 4.5, e);
+      tLY = lerp(0.5, 0.5, e);
+      tLZ = lerp(-3, 3, e);
+    } else {
+      const f = (sp - 0.66) / 0.34;
+      const e = easeInOut(f);
+      tCX = lerp(3, 0, e);
+      tCY = lerp(2.5, 4, e);
+      tCZ = lerp(6, 14, e);
+      tLX = lerp(4.5, 0, e);
+      tLY = lerp(0.5, 1, e);
+      tLZ = lerp(3, 0, e);
+    }
+
+    const lerpF = Math.min(dt * 4, 0.18);
+    camX = lerp(camX, tCX, lerpF);
+    camY = lerp(camY, tCY, lerpF);
+    camZ = lerp(camZ, tCZ, lerpF);
+
+    camera.position.set(camX, camY, camZ);
+    camera.lookAt(tLX, tLY, tLZ);
+
+    // Fog deepens as we fly in
+    const targetFog = lerp(0.018, 0.035, easeInOut(Math.min(sp * 3, 1)));
+    fogDensity = lerp(fogDensity, targetFog, lerpF);
+    scene.fog.density = fogDensity;
+
+    // Mountain parallax — each layer moves at different speed
+    mountains.forEach((m, i) => {
+      const parallaxFactor = (i + 1) * 0.006;
+      m.position.x = Math.sin(t * 0.04) * 0.2 + sp * parallaxFactor * 80 * (i % 2 === 0 ? 1 : -1);
+    });
+
+    // Particles drift
+    const pPositions = pGeo.attributes.position.array;
+    for (let i = 0; i < particleCount; i++) {
+      pPositions[i*3]   += pVel[i*3];
+      pPositions[i*3+1] += pVel[i*3+1];
+      pPositions[i*3+2] += pVel[i*3+2];
+      if (pPositions[i*3+1] > 12) pPositions[i*3+1] = -8;
+      if (Math.abs(pPositions[i*3]) > 20) pPositions[i*3] *= -0.98;
+    }
+    pGeo.attributes.position.needsUpdate = true;
+
+    // Sword spin and pulse — phase 2
+    const swordFocus = sp > 0.33 && sp < 0.75
+      ? easeInOut((sp - 0.33) / 0.35)
+      : 0;
+    swordGroup.rotation.y = t * 0.4 + sp * Math.PI * 1.5;
+    swordGroup.rotation.z = lerp(-0.25, -0.1, swordFocus);
+    swordGroup.position.y = 0.5 + Math.sin(t * 0.9) * 0.12;
+
+    // Glow ring pulsing
+    glowRing.position.copy(swordGroup.position);
+    glowRing.rotation.y = t * 0.6;
+    const pulse = 0.3 + Math.sin(t * 2.1) * 0.15 + swordFocus * 0.25;
+    glowRingMat.opacity = pulse;
+    glowRing.scale.setScalar(1 + swordFocus * 0.3);
+
+    // Petals falling with swirl
+    const petalPositions = petalGeo.attributes.position.array;
+    for (let i = 0; i < petalCount; i++) {
+      petalPositions[i*3]   += Math.sin(t * 0.3 + petalPhase[i]) * 0.008;
+      petalPositions[i*3+1] -= 0.015 + sp * 0.01;
+      petalPositions[i*3+2] += Math.cos(t * 0.2 + petalPhase[i]) * 0.005;
+      if (petalPositions[i*3+1] < -6) {
+        petalPositions[i*3+1] = 14;
+        petalPositions[i*3]   = (Math.random() - 0.5) * 30;
+      }
+    }
+    petalGeo.attributes.position.needsUpdate = true;
+    petalMat.opacity = 0.35 + swordFocus * 0.3;
+
+    renderer.render(scene, camera);
+  }
+
+  // Scroll listener
+  function onScroll() {
+    scrollProgress = getScrollProgress();
+    updatePanels(scrollProgress);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  animate();
+})();
+
+// ── Particle system
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 3 + 1;
+    p.style.cssText = `
+      width: ${size}px;
+      height: ${size}px;
+      left: ${Math.random() * 100}%;
+      bottom: ${Math.random() * 20}%;
+      animation-duration: ${Math.random() * 12 + 8}s;
+      animation-delay: ${Math.random() * 8}s;
+    `;
+    container.appendChild(p);
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav scroll effect
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.style.background = 'rgba(6,4,4,0.96)';
+      nav.style.borderBottomColor = 'rgba(200,145,58,0.25)';
+    } else {
+      nav.style.background = '';
+      nav.style.borderBottomColor = '';
+    }
+  });
+
+  // Email form
+  document.querySelector('.email-submit').addEventListener('click', function() {
+    const input = document.querySelector('.email-input');
+    if (input.value && input.value.includes('@')) {
+      this.textContent = '✓ Registered';
+      this.style.background = 'linear-gradient(135deg, #3a7a5a, #2a5a3a)';
+      this.style.color = '#f5ede0';
+      input.value = '';
+      input.placeholder = 'Thank you — stay tuned for updates!';
+    } else {
+      input.style.outline = '1px solid #8b1a1a';
+      setTimeout(() => input.style.outline = '', 1500);
+    }
+  });
+</script>
+</body>
+</html>
